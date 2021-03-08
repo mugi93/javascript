@@ -39,6 +39,8 @@ console.log(template);
 
 //bonus
 var changed="bonjour";
-var re ="o"
- var ban = changed.replace(re,"a");
-console.log(ban);
+
+console.log(changed.replace(/o/g,"a"));
+
+
+

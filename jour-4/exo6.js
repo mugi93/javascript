@@ -19,4 +19,5 @@ function format(num){
     };
 }
 console.log(format(3700));
+console.log(format(4000));
 

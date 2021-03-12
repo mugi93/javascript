@@ -1,7 +1,7 @@
 function generatePassword(num) {
     var password2 = ""
     
-    if(num<6 || num>15){
+    if(num<6 && num>15){
         console.log("error")
     
     }else{for (var i =1; i <= num; i++) {

@@ -28,3 +28,4 @@ function launchDice(numberOfDice) {
         console.log(joueur1);
 
     }
+

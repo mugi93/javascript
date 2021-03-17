@@ -35,10 +35,10 @@ var sum=0;
      
      if(dice>=5){
         sum=sum+dice;
-        console.log(sum);
+       ;
 
      }
       }
       
-     
+      console.log(sum)
 

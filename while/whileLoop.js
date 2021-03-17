@@ -25,14 +25,16 @@ var tysonGay=0;
 
 while(ussainBolt>100 || tysonGay>100){
     var num =Math.floor(Math.random()*(10-1+1)+1);
-    var num2=Math.floor(Math.random()*(10-1+1)+1);
-    ussainBolt=ussainBolt+num;
+   ussainBolt=ussainBolt+num;
+    
+   var num2=Math.floor(Math.random()*(10-1+1)+1);
     tysonGay=tysonGay+num2;
-    if(ussainBolt>100){
+    
+    
+   
+} if(ussainBolt>100){
         console.log(ussainBolt);
 
-    }else if(tysonGay>100){
+    }else {
         console.log(tysonGay);
     }
-
-}

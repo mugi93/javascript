@@ -10,17 +10,40 @@
 
 var prompt = require("prompt");
 
-prompt.start();
 
+
+
+var validation = [
+    {
+        name:"email",
+        validator:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+     },
+     {
+         name:"username",
+         validator:/^[a-zA-Z\s\-]+$/,
+     },
+
+     {
+         name:"password",
+        validator :/^[a-zA-Z0-9-]{5,}[a-zA-Z]+[0-9]*$/,
+
+     }
+
+
+]
+prompt.start();
 
 
 prompt.get(["username", "email", "password"],
     function (err, res) {
         if (err) {
+            console.log("error")
             return onErr(err);
         }
 
         console.log("Données reçues :");
-        console.log("=> Username : " + res.username); // affiche le résultat pour la propriété "username"
-        console.log("=> Email : " + res.email); // affiche le résultat pour la propriété "email"
+        console.log("=> Username : " + res.username); 
+        console.log("=> Email : " + res.email); console.log("=> Password :"+ res.password)
+        console.log("All good !")
+
     });

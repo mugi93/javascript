@@ -14,12 +14,13 @@ prompt.start();
 
 
 
-prompt.get(["username", "email"], function (err, res) {  // demande à obtenir les propriétés "username" et "email"
-  if (err) {
-		return onErr(err);
-	}
+prompt.get(["username", "email", "password"],
+    function (err, res) {
+        if (err) {
+            return onErr(err);
+        }
 
-  console.log("Données reçues :");
-  console.log("=> Username : " + res.username); // affiche le résultat pour la propriété "username"
-  console.log("=> Email : " + res.email); // affiche le résultat pour la propriété "email"
-});
+        console.log("Données reçues :");
+        console.log("=> Username : " + res.username); // affiche le résultat pour la propriété "username"
+        console.log("=> Email : " + res.email); // affiche le résultat pour la propriété "email"
+    });

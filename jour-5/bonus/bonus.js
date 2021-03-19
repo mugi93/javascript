@@ -11,11 +11,20 @@ function motus(){
     prompt.get({
         name:"mot",
         validator:/^[a-zA-Z]+$/,
+        description :"choisir un mot de 5 lettres",
     }),
     function(err,res){
         secret.split("")
         for(var i=1;i<=6;i++){
-            if(res.mot)
+            for(var j=0;j<secret.length;j++){
+                
+            }
+
+
+
+            if(res.mot){
+
+            }
         }
 
     }

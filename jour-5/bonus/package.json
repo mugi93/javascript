@@ -1,7 +1,8 @@
 {
-  "name": "jour-6",
+  "name": "bonus",
   "version": "1.0.0",
-  "main": "age.js",
+  "description": "",
+  "main": "bonus.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,9 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.29.1",
+    "colors": "^1.4.0",
     "prompt": "^1.1.0"
-  },
-  "devDependencies": {},
-  "description": ""
+  }
 }

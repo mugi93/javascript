@@ -16,22 +16,28 @@ prompt.start();
 var mysteryNum = Math.floor(Math.random() * (100 - 1) + 1);
 
 function displayPrompt() {
-  prompt.get({ name: "number", description: "Quel est le nombre ?" , validator: /^[0-9]+$/, warning:"choissisez un nombre entier"}, function (err, res) { // permet de paramétrer la question
-    if (parseInt(res.number) === mysteryNum ) { 
-      console.log("bravo !");
-    } else if (parseInt(res.number) < mysteryNum){
+  prompt.get({
+    name: "number",
+    description: "Quel est le nombre ?",
+    validator: /^[0-9]+$/,
+    warning: "choissisez un nombre entier"
+  },
+    function (err, res) { // permet de paramétrer la question
+      if (parseInt(res.number) === mysteryNum) {
+        console.log("bravo !");
+      } else if (parseInt(res.number) < mysteryNum) {
         console.log("c'est plus")
-      displayPrompt(); // relance le prompt si la saisie n'est pas valide
-      
-    }else {
+        displayPrompt(); // relance le prompt si la saisie n'est pas valide
+
+      } else {
         console.log("c'est moins")
         displayPrompt()
-    }
-  });
+      }
+    });
 }
 
 displayPrompt(); // on n'oublie pas d'appeler la fonction ;)
-    
+
 
 
 

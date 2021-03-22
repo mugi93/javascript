@@ -14,15 +14,21 @@ function pendu(){
     }),
 
     function(err,res){
-        var pou=secret.split("")
+        // var pou=secret.split("")
         for(var i=1;i<=10;i++){
             for(var j=0;j<secret.length;j++){
-                if(res.mot[j]===pou){
+                if(res.mot[j]===pou[j]){
                     console.log(res.mot[j]);
 
+                }else{
+                    console.log("oups... plus que " +j+"chances !")
                 }
             }
 
 
 
+    
         }  
+    }    
+}
+pendu()

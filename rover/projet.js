@@ -102,23 +102,6 @@ function moveFoward(rover) {
 
     
 
-    //  if (rover.direction === "E" && rover.x<9) {
-    //     rover.x++;
-    // } else if (rover.direction === "W" && rover.x>0) {
-    //     rover.x--;
-    // } else if (rover.direction === "S" && rover.y<9) {
-    //     rover.y++;
-    // } else if(rover.direction==="N"&& rover.y>0){
-    //     rover.y--;
-    
-    // }else{
-        
-    //     return console.log("error")
-
-    // }
-
-
-    // console.log(rover);
 };
 
 // moveFoward(rover);

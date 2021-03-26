@@ -20,4 +20,4 @@ function catchPokemon(num) {
         });
 
 };
-catchPokemon(1);
+catchPokemon(898);

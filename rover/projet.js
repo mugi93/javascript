@@ -1,5 +1,5 @@
 var grid = [
-    [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+    ["N", " ", " ", " ", " ", " ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
@@ -17,6 +17,7 @@ var rover = {
     y: 0,
     travelLog: [],
 };
+var err = ""
 
 
 
@@ -36,6 +37,7 @@ function turnRight(rover) {
     } else {
         rover.direction = "N";
     }
+    grid[rover.x][rover.y] = rover.direction
     // console.log(rover);
 };
 // turnRight(rover);
@@ -53,54 +55,66 @@ function turnLeft(rover) {
     } else {
         rover.direction = "N";
     }
-
+    grid[rover.x][rover.y] = rover.direction
     // console.log(rover);
 };
 // turnLeft(rover);
 
 // fonction pour bouger 
 function moveFoward(rover) {
-    if(rover.direction==="E"){
-        if(rover.x<9){
+    rover.travelLog.push({
+        x: rover.x,
+        y: rover.y
+    })
+    if (rover.direction === "E") {
+        if (rover.x < 9) {
             rover.x++
-            rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-        }else {
+            // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+        } else {
+            error = "perdu"
             console.log("error")
             return
         };
     };
-    if(rover.direction==="W"){
-        if(rover.x>0){
+    if (rover.direction === "W") {
+        if (rover.x > 0) {
             rover.x++
-            rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-        }else {
+            // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+        } else {
             console.log("error")
             return
         };
     };
-    if(rover.direction==="S"){
-        if(rover.y<9){
+    if (rover.direction === "S") {
+        if (rover.y < 9) {
             rover.y++
-            rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-        }else {
+            // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+        } else {
             console.log("error")
             return
         };
     };
-    if(rover.direction==="N"){
-        if(rover.x>0){
+    if (rover.direction === "N") {
+        if (rover.x > 0) {
             rover.y++
-            rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-        }else {
+            // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+        } else {
             console.log("error")
             return
         };
+        if (err) {
+            console.error(err)
+        } else {
+            var last = rover.travelLog[rover.travelLog.length - 1]
+            grid[last.y][last.x] = " ";
+            grid[rover.x][rover.y] = rover.direction
+        }
     };
 
 
 
 
-    
+
 
 };
 
@@ -108,22 +122,31 @@ function moveFoward(rover) {
 
 
 // fonction pour reculer
-function moveBackWard(rover){
-    if (rover.direction==="N"&&rover.y<9){
-        rover.y++
-        rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-    }else if(rover.direction==="S"&&rover.y>0){
-        rover.y--
-        rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-    }else if(rover.direction==="E"&&rover.x>0){
-        rover.x--
-        rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-    }else if(rover.direction==="W"&&rover.x<9){
-        rover.x++
-        rover.travelLog.push("x:" + rover.x+","+ "y:" + rover.y);
-    }
+function moveBackWard(rover) {
 
-}
+    if (rover.direction === "N" && rover.y < 9) {
+        rover.y++
+        // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+    } else if (rover.direction === "S" && rover.y > 0) {
+        rover.y--
+        // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+    } else if (rover.direction === "E" && rover.x > 0) {
+        rover.x--
+        // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+    } else if (rover.direction === "W" && rover.x < 9) {
+        rover.x++
+        // rover.travelLog.push("x:" + rover.x + "," + "y:" + rover.y);
+    }
+    if (err) {
+        console.error(err)
+    } else {
+        var last = rover.travelLog[rover.travelLog.length - 1]
+        grid[last.y][last.x] = " ";
+        grid[rover.x][rover.y] = rover.direction
+    }
+};
+
+
 
 
 // fonction outil
@@ -138,19 +161,21 @@ function pilotRover(pilot) {
             turnRight(rover);
         } else if (pilot[i] === "f") {
             moveFoward(rover);
-        } else if (pilot[i]=== "b"){
+        } else if (pilot[i] === "b") {
             moveBackWard(rover)
-        }else {
+        } else {
             console.log("error");
             return
         };
-        
-          console.log(rover)
+
+        console.log(rover)
+         
+
     };
-    
-   
-   
-        
+
+    console.table(grid)
+
+
 
 
 };
@@ -165,19 +190,26 @@ var option = {
     validator: /^[a-zA-Z]/,
     description: "utiliser juste les lettre r, l et f",
 }
-
-prompt.get(option,
-    function (err, res) {
-        if (err) {
-            console.error(err);
-            return
-
-        }else {
-            pilotRover(res.direction)
-
-        };
+function displayPrompt() {
 
 
+    prompt.get(option,
+        function (err, res) {
+            if (err) {
+                console.error(err);
+                return
 
-    });
+            } else {
+                pilotRover(res.direction)
 
+            };
+
+            // displayPrompt()
+
+        });
+
+// console.table(grid)
+
+}
+
+displayPrompt()

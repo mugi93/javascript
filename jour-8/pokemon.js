@@ -21,3 +21,16 @@ function catchPokemon(num) {
 
 };
 catchPokemon(898);
+
+// function catchPokemon(id) {
+//     var url = "https://pokeapi.co/api/v2/pokemon/" + id;
+
+//     request.get(url, function (err, res, body) {
+//         var pokemon = JSON.parse(body)
+    
+//         console.log("id:", id);
+//         console.log("name:", pokemon.name);
+//     });
+// }
+
+catchPokemon(25) //Pikachu
